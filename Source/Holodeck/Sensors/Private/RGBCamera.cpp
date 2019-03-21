@@ -5,7 +5,6 @@ URGBCamera::URGBCamera() {
 	SensorName = "RGBCamera";
 }
 
-
 void URGBCamera::InitializeSensor() {
 	Super::InitializeSensor();
 
@@ -19,5 +18,12 @@ void URGBCamera::TickSensorComponent(float DeltaTime, ELevelTick TickType, FActo
 	if (TickCounter == TicksPerCapture) {
 		RenderRequest.RetrievePixels(Buffer, TargetTexture);
 		TickCounter = 0;
+	}
+}
+
+// Allows sensor members to be edited programmatically from client.
+void URGBCamera::EditSensorMember(FString MemberName, FString MemberValue) {
+	if (MemberName == "TicksPerCapture") {
+		TicksPerCapture = FCString::Atoi(*MemberValue);
 	}
 }

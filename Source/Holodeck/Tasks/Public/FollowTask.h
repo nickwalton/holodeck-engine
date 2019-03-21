@@ -35,6 +35,11 @@ public:
 	*/
 	virtual void InitializeSensor() override;
 
+	/**
+	* Allows members to be edited programatically
+	*/
+	virtual void EditSensorMember(FString MemberName, FString MemberValue) override;
+
 	// Actor to follow
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		AActor* ToFollow;

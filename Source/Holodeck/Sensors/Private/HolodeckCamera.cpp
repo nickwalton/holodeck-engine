@@ -54,3 +54,13 @@ void UHolodeckCamera::InitializeSensor() {
 void UHolodeckCamera::TickSensorComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) {
 	RenderRequest.RetrievePixels(Buffer, TargetTexture);
 }
+
+// Allows sensor members to be edited programmatically from client.
+void UHolodeckCamera::EditSensorMember(FString MemberName, FString MemberValue) {
+	if (MemberName == "CaptureWidth") {
+		CaptureWidth = FCString::Atoi(*MemberValue);
+	}
+	else if (MemberName == "CaptureHeight") {
+		CaptureHeight = FCString::Atoi(*MemberValue);
+	}
+}

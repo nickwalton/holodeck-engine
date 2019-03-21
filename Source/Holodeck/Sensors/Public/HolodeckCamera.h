@@ -30,6 +30,11 @@ public:
 	*/
 	virtual void InitializeSensor() override;
 
+	/**
+	* Allows members to be edited programatically
+	*/
+	virtual void EditSensorMember(FString MemberName, FString MemberValue) override;
+
 protected:
 	//Checkout HolodeckSensor.h for the documentation for this overridden function.
 	virtual void TickSensorComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction);

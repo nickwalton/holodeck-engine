@@ -32,6 +32,11 @@ public:
 	*/
 	virtual void InitializeSensor() override;
 
+	/**
+	* Allows members to be edited programatically
+	*/
+	virtual void EditSensorMember(FString MemberName, FString MemberValue) override;
+
 	// Distance to next reward (if not UseDistanceReward)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float Interval;

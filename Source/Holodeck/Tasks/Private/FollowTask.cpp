@@ -44,3 +44,28 @@ void UFollowTask::TickSensorComponent(float DeltaTime, ELevelTick TickType, FAct
 	// Call TaskSensor's Tick to store Reward and Terminal
 	UTaskSensor::TickSensorComponent(DeltaTime, TickType, ThisTickFunction);
 }
+
+// Allows sensor members to be edited programmatically from client.
+void UFollowTask::EditSensorMember(FString MemberName, FString MemberValue) {
+	if (MemberName == "OnlyWithinSight") {
+		OnlyWithinSight = MemberValue.ToBool();
+	}
+	else if (MemberName == "FOVRadians") {
+		FOVRadians = FCString::Atof(*MemberValue);
+	}
+	else if (MemberName == "MinDistance") {
+		MinDistance = FCString::Atof(*MemberValue);
+	}
+	else if (MemberName == "TargetHeight") {
+		TargetHeight = FCString::Atof(*MemberValue);
+	}
+	else if (MemberName == "ToFollow") {
+		for (TActorIterator<AStaticMeshActor> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+		{
+			FString Name = ActorItr->GetName();
+			if (Name == MemberValue) {
+				ToFollow = *ActorItr;
+			}
+		}
+	}
+}

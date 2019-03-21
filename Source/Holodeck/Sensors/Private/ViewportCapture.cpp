@@ -32,3 +32,16 @@ void UViewportCapture::TickSensorComponent(float DeltaTime,
 	if (!ViewportClient->BufferIsSet())
 		ViewportClient->SetBuffer(Buffer);
 }
+
+// Allows sensor members to be edited programmatically from client.
+void UViewportCapture::EditSensorMember(FString MemberName, FString MemberValue) {
+	if (MemberName == "bGrayScale") {
+		bGrayScale = MemberValue.ToBool();
+	}
+	else if (MemberName == "Width") {
+		Width = FCString::Atoi(*MemberValue);
+	}
+	else if (MemberName == "Height") {
+		Height = FCString::Atoi(*MemberValue);
+	}
+}

@@ -24,6 +24,11 @@ public:
 	* Sets up the class
 	*/
 	virtual void InitializeSensor() override;
+
+	/**
+	* Allows members to be edited programatically
+	*/
+	virtual void EditSensorMember(FString MemberName, FString MemberValue) override;
 	
 protected:
 	// See HolodeckSensor for documentation for these overridden functions.

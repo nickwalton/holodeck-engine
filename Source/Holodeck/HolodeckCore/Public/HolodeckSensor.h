@@ -61,6 +61,11 @@ public:
 	  */
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	/**
+	* Override this function if sensor has editable members.
+	*/
+	virtual void EditSensorMember(FString MemberName, FString MemberValue) {}
+
 	virtual FString GetAgentName() { return this->AgentName; }
 
 	FString AgentName;
