@@ -18,6 +18,7 @@ UCommand* UCommandFactory::MakeCommand(const std::string& Name, const std::vecto
 										  { "SetSensorEnabled", &CreateInstance<USetSensorEnabledCommand> },
 										  { "AddSensor", &CreateInstance<UAddSensorCommand> },
 										  { "RemoveSensor", &CreateInstance<URemoveSensorCommand> },
+										  { "EditSensor", &CreateInstance<UEditSensorCommand> },
 										  { "CustomCommand", &CreateInstance<UCustomCommand> } };
 
 	UCommand*(*CreateCommandFunction)()  = CommandMap[Name];

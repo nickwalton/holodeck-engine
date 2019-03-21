@@ -20,6 +20,7 @@
 #include "SetSensorEnabledCommand.h"
 #include "AddSensorCommand.h"
 #include "RemoveSensorCommand.h"
+#include "EditSensorCommand.h"
 #include "CommandFactory.generated.h"
 
 class AHolodeckGameMode;

@@ -23,6 +23,8 @@ void URGBCamera::TickSensorComponent(float DeltaTime, ELevelTick TickType, FActo
 
 // Allows sensor members to be edited programmatically from client.
 void URGBCamera::EditSensorMember(FString MemberName, FString MemberValue) {
+	Super::EditSensorMember(MemberName, MemberValue);
+
 	if (MemberName == "TicksPerCapture") {
 		TicksPerCapture = FCString::Atoi(*MemberValue);
 	}
