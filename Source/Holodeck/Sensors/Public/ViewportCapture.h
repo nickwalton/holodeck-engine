@@ -24,11 +24,6 @@ public:
 	* Sets up the class
 	*/
 	virtual void InitializeSensor() override;
-
-	/**
-	* Allows members to be edited programatically
-	*/
-	virtual void EditSensorMember(FString MemberName, FString MemberValue) override;
 	
 protected:
 	// See HolodeckSensor for documentation for these overridden functions.
@@ -36,13 +31,7 @@ protected:
 	int GetItemSize() override { return sizeof(FColor); };
 	void TickSensorComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UPROPERTY(EditAnywhere)
-	bool bGrayScale;
-
-	UPROPERTY(EditAnywhere)
 	int Width;
-
-	UPROPERTY(EditAnywhere)
 	int Height;
 
 private:

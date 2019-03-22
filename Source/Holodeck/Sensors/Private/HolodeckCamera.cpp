@@ -59,8 +59,10 @@ void UHolodeckCamera::TickSensorComponent(float DeltaTime, ELevelTick TickType, 
 void UHolodeckCamera::EditSensorMember(FString MemberName, FString MemberValue) {
 	if (MemberName == "CaptureWidth") {
 		CaptureWidth = FCString::Atoi(*MemberValue);
+		TargetTexture->InitCustomFormat(CaptureWidth, CaptureHeight, PF_FloatRGBA, false);
 	}
 	else if (MemberName == "CaptureHeight") {
 		CaptureHeight = FCString::Atoi(*MemberValue);
+		TargetTexture->InitCustomFormat(CaptureWidth, CaptureHeight, PF_FloatRGBA, false);
 	}
 }

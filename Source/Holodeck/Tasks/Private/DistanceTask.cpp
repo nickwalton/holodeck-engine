@@ -5,14 +5,25 @@
 void UDistanceTask::InitializeSensor() {
 	Super::InitializeSensor();
 
-	StartDistance = (GoalObject->GetActorLocation() - Parent->GetActorLocation()).Size();
-	NextDistance = StartDistance - Interval;
-	LastDistance = StartDistance;
+	if (IsValid(GoalObject)) {
+		StartDistance = (GoalObject->GetActorLocation() - Parent->GetActorLocation()).Size();
+		NextDistance = StartDistance - Interval;
+		LastDistance = StartDistance;
+	} else {
+		StartDistance = -1;
+		NextDistance = -1;
+		LastDistance = -1;
+	}
 }
 
 // Called every frame
 void UDistanceTask::TickSensorComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) {
-	if (IsValid(Parent)) {
+	if (IsValid(Parent) && IsValid(GoalObject)) {
+		if (StartDistance == -1) {
+			StartDistance = (GoalObject->GetActorLocation() - Parent->GetActorLocation()).Size();
+			NextDistance = StartDistance - Interval;
+			LastDistance = StartDistance;
+		}
 		if (UseDistanceReward)
 			SetDistanceReward();
 		else
